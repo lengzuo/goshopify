@@ -97,8 +97,8 @@ With a permanent access token, you can make API calls like this:
 
 ```go
     ctx := context.TODO()
-    client := adminapi.New("ni-lab",
-        adminapi.WithToken("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"),
+    client := adminapi.New("ShopName",
+        adminapi.WithToken("Token"),
         adminapi.WithVersion("2022-01"),
     )
 
@@ -125,7 +125,7 @@ Private Shopify apps use basic authentication.
 ```go
 // Create an app somewhere.
 ctx := context.TODO()
-client := adminapi.New("ni-lab",
+client := adminapi.New("ShopName",
     adminapi.WithCredentials(common.Credentials{
         Password:  "password",
         APIKey:    "APIKey",
@@ -141,8 +141,8 @@ to understand the format and release schedules. You can use `WithVersion` to spe
 of the API. If you do not use this option you will be defaulted to the oldest stable API.
 
 ```go
-client := adminapi.New("ni-lab",
-    adminapi.WithToken("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"),
+client := adminapi.New("ShopName",
+    adminapi.WithToken("Token"),
     adminapi.WithVersion("2022-01"),
 )
 ```
