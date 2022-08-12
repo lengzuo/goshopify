@@ -1,4 +1,4 @@
-package order
+package pricerule
 
 import (
 	"context"
@@ -6,20 +6,21 @@ import (
 	"net/http"
 
 	"github.com/lengzuo/goshopify/adminapi/dto"
+
 	"github.com/lengzuo/goshopify/common"
 )
 
 func setupUpdateEndpoint() common.Endpoint {
 	return common.Endpoint{
-		Path:   "/orders/%s.json",
+		Path:   "/price_rules/%s.json",
 		Method: http.MethodPut,
 	}
 }
 
-func (c impl) Update(ctx context.Context, req dto.OrderCollection) (*dto.OrderCollection, error) {
+func (c impl) Update(ctx context.Context, req dto.PriceRuleCollection) (*dto.PriceRuleCollection, error) {
 	endpoint := c.updateEndpoint
-	path := fmt.Sprintf(endpoint.Path, common.Int64Str(req.Order.ID))
-	resp := new(dto.OrderCollection)
+	path := fmt.Sprintf(endpoint.Path, common.Int64Str(req.PriceRule.ID))
+	resp := new(dto.PriceRuleCollection)
 	err := c.call(ctx, endpoint.Method, path, req, resp)
 	if err != nil {
 		return nil, err

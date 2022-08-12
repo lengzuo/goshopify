@@ -19,7 +19,7 @@ func setupSetDefaultEndpoint() common.Endpoint {
 
 func (c impl) SetDefault(ctx context.Context, customerID, addressID int64) (*dto.AddressCollection, error) {
 	endpoint := c.updateEndpoint
-	path := fmt.Sprint(endpoint.Path,
+	path := fmt.Sprintf(endpoint.Path,
 		common.Int64Str(customerID),
 		common.Int64Str(addressID),
 	)

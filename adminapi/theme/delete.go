@@ -17,7 +17,7 @@ func setupDeleteEndpoint() common.Endpoint {
 
 func (c impl) Delete(ctx context.Context, themeID int64) error {
 	endpoint := c.deleteEndpoint
-	path := fmt.Sprint(endpoint.Path, common.Int64Str(themeID))
+	path := fmt.Sprintf(endpoint.Path, common.Int64Str(themeID))
 	err := c.call(ctx, endpoint.Method, path, nil, nil)
 	if err != nil {
 		return err

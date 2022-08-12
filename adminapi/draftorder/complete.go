@@ -18,7 +18,7 @@ func setupCompleteEndpoint() common.Endpoint {
 
 func (c impl) Complete(ctx context.Context, draftOrderID int64, req dto.CompleteDraftOrderRequest) (*dto.DraftOrderCollection, error) {
 	endpoint := c.completeEndpoint
-	path := fmt.Sprint(endpoint.Path, common.Int64Str(draftOrderID))
+	path := fmt.Sprintf(endpoint.Path, common.Int64Str(draftOrderID))
 	resp := new(dto.DraftOrderCollection)
 	err := c.call(ctx, endpoint.Method, path, req, resp)
 	if err != nil {

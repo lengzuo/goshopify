@@ -19,7 +19,7 @@ func setupBulkEndpoint() common.Endpoint {
 
 func (c impl) Bulk(ctx context.Context, customerID int64, req dto.BulkUpdateAddressRequest) error {
 	endpoint := c.bulkEndpoint
-	path := fmt.Sprint(endpoint.Path, common.Int64Str(customerID))
+	path := fmt.Sprintf(endpoint.Path, common.Int64Str(customerID))
 	resp := new(dto.AddressCollection)
 	err := c.call(ctx, endpoint.Method, path, req, resp)
 	if err != nil {

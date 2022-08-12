@@ -19,7 +19,7 @@ func setupSendInvoiceEndpoint() common.Endpoint {
 
 func (c impl) SendInvoice(ctx context.Context, draftOrderID int64, req dto.DraftOrderInvoice) (*dto.DraftOrderInvoice, error) {
 	endpoint := c.sendInvoiceEndpoint
-	path := fmt.Sprint(endpoint.Path, common.Int64Str(draftOrderID))
+	path := fmt.Sprintf(endpoint.Path, common.Int64Str(draftOrderID))
 	resp := new(dto.DraftOrderInvoice)
 	err := c.call(ctx, endpoint.Method, path, req, resp)
 	if err != nil {

@@ -19,7 +19,7 @@ func setupUpdateEndpoint() common.Endpoint {
 
 func (c impl) Update(ctx context.Context, req dto.VariantCollection) (*dto.VariantCollection, error) {
 	endpoint := c.updateEndpoint
-	path := fmt.Sprint(endpoint.Path, common.Int64Str(req.Variant.ID))
+	path := fmt.Sprintf(endpoint.Path, common.Int64Str(req.Variant.ID))
 	resp := new(dto.VariantCollection)
 	err := c.call(ctx, endpoint.Method, path, req, resp)
 	if err != nil {

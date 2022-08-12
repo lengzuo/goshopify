@@ -19,7 +19,7 @@ func setupUpdateEndpoint() common.Endpoint {
 
 func (c impl) Update(ctx context.Context, req dto.UpdateAddressRequest) (*dto.AddressCollection, error) {
 	endpoint := c.updateEndpoint
-	path := fmt.Sprint(endpoint.Path,
+	path := fmt.Sprintf(endpoint.Path,
 		common.Int64Str(req.Address.CustomerID),
 		common.Int64Str(req.Address.ID),
 	)
