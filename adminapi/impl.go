@@ -2,6 +2,11 @@ package adminapi
 
 import (
 	"context"
+	"github.com/lengzuo/goshopify/adminapi/discountcode"
+	"github.com/lengzuo/goshopify/adminapi/event"
+	"github.com/lengzuo/goshopify/adminapi/inventoryitem"
+	"github.com/lengzuo/goshopify/adminapi/pricerule"
+	"github.com/lengzuo/goshopify/adminapi/recurringapplicationcharge"
 	"net/http"
 	"net/url"
 	"path"
@@ -46,31 +51,42 @@ type impl struct {
 	credentials common.Credentials
 
 	// All APIs
-	ApplicationCharge     applicationcharge.API
-	ApplicationCredit     applicationcredit.API
-	Customer              customer.API
-	CustomerAddress       address.API
-	DraftOrder            draftorder.API
-	Order                 order.API
-	Metafield             metafield.API
-	Product               product.API
-	ProductImage          image.API
-	Report                report.API
-	ScriptTag             scripttag.API
-	StorefrontAccessToken storefrontacesstoken.API
-	Theme                 theme.API
-	Variant               variant.API
+	Address                    address.API
+	ApplicationCharge          applicationcharge.API
+	ApplicationCredit          applicationcredit.API
+	Customer                   customer.API
+	DiscountCode               discountcode.API
+	DraftOrder                 draftorder.API
+	Event                      event.API
+	InventoryItem              inventoryitem.API
+	Metafield                  metafield.API
+	Order                      order.API
+	PriceRule                  pricerule.API
+	Product                    product.API
+	ProductImage               image.API
+	RecurringApplicationCharge recurringapplicationcharge.API
+	Report                     report.API
+	ScriptTag                  scripttag.API
+	StorefrontAccessToken      storefrontacesstoken.API
+	Theme                      theme.API
+	Variant                    variant.API
 }
 
 func setupAPI(c *impl) {
+	c.Address = address.New(c.Call)
 	c.ApplicationCharge = applicationcharge.New(c.Call)
 	c.ApplicationCredit = applicationcredit.New(c.Call)
 	c.Customer = customer.New(c.Call)
-	c.CustomerAddress = address.New(c.Call)
+	c.DiscountCode = discountcode.New(c.Call)
 	c.DraftOrder = draftorder.New(c.Call)
+	c.Event = event.New(c.Call)
+	c.InventoryItem = inventoryitem.New(c.Call)
+	c.Metafield = metafield.New(c.Call)
 	c.Order = order.New(c.Call)
+	c.PriceRule = pricerule.New(c.Call)
 	c.Product = product.New(c.Call)
 	c.ProductImage = image.New(c.Call)
+	c.RecurringApplicationCharge = recurringapplicationcharge.New(c.Call)
 	c.Report = report.New(c.Call)
 	c.ScriptTag = scripttag.New(c.Call)
 	c.StorefrontAccessToken = storefrontacesstoken.New(c.Call)

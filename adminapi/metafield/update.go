@@ -19,7 +19,7 @@ func setupUpdateEndpoint() common.Endpoint {
 
 func (c impl) Update(ctx context.Context, req dto.MetafieldCollection) (*dto.MetafieldCollection, error) {
 	endpoint := c.updateEndpoint
-	path := fmt.Sprint(endpoint.Path, common.Int64Str(req.Metafield.ID))
+	path := fmt.Sprintf(endpoint.Path, common.Int64Str(req.Metafield.ID))
 	resp := new(dto.MetafieldCollection)
 	err := c.call(ctx, endpoint.Method, path, req, resp)
 	if err != nil {

@@ -1,4 +1,4 @@
-package order
+package inventoryitem
 
 import (
 	"context"
@@ -11,15 +11,15 @@ import (
 
 func setupUpdateEndpoint() common.Endpoint {
 	return common.Endpoint{
-		Path:   "/orders/%s.json",
+		Path:   "/inventory_items/%s.json",
 		Method: http.MethodPut,
 	}
 }
 
-func (c impl) Update(ctx context.Context, req dto.OrderCollection) (*dto.OrderCollection, error) {
+func (c impl) Update(ctx context.Context, req dto.InventoryItemCollection) (*dto.InventoryItemCollection, error) {
 	endpoint := c.updateEndpoint
-	path := fmt.Sprintf(endpoint.Path, common.Int64Str(req.Order.ID))
-	resp := new(dto.OrderCollection)
+	path := fmt.Sprintf(endpoint.Path, common.Int64Str(req.InventoryItem.ID))
+	resp := new(dto.InventoryItemCollection)
 	err := c.call(ctx, endpoint.Method, path, req, resp)
 	if err != nil {
 		return nil, err

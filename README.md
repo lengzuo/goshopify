@@ -9,15 +9,21 @@ Open source Shopify Golang library. I will be very happy and welcome if you woul
 - [x] Application Charge
 - [x] Application Credit
 - [x] Customer
+- [x] Discount Code 
 - [x] Draft Order
+- [x] Event
+- [x] Inventory Item 
 - [x] Metafield
 - [x] Order
+- [x] Price Rule 
 - [x] Product
+- [x] Product Image
 - [x] Recurring Application Charge
 - [x] Report
 - [x] Script Tag
 - [x] Storefront Access Token
 - [x] Theme
+- [x] Variant 
 
 ## Install
 

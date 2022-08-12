@@ -18,7 +18,7 @@ func setupCancelEndpoint() common.Endpoint {
 
 func (c impl) Cancel(ctx context.Context, orderID int64, req dto.CancelOrderRequest) (*dto.OrderCollection, error) {
 	endpoint := c.cancelEndpoint
-	path := fmt.Sprint(endpoint.Path, common.Int64Str(orderID))
+	path := fmt.Sprintf(endpoint.Path, common.Int64Str(orderID))
 	resp := new(dto.OrderCollection)
 	err := c.call(ctx, endpoint.Method, path, req, resp)
 	if err != nil {

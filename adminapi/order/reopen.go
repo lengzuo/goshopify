@@ -19,7 +19,7 @@ func setupReopenEndpoint() common.Endpoint {
 
 func (c impl) Reopen(ctx context.Context, orderID int64) (*dto.OrderCollection, error) {
 	endpoint := c.updateEndpoint
-	path := fmt.Sprint(endpoint.Path, common.Int64Str(orderID))
+	path := fmt.Sprintf(endpoint.Path, common.Int64Str(orderID))
 	resp := new(dto.OrderCollection)
 	err := c.call(ctx, endpoint.Method, path, nil, resp)
 	if err != nil {
