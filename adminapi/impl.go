@@ -26,6 +26,7 @@ import (
 	"github.com/lengzuo/goshopify/adminapi/storefrontacesstoken"
 	"github.com/lengzuo/goshopify/adminapi/theme"
 	"github.com/lengzuo/goshopify/adminapi/variant"
+	"github.com/lengzuo/goshopify/adminapi/webhook"
 	"github.com/lengzuo/goshopify/common"
 )
 
@@ -70,6 +71,7 @@ type impl struct {
 	StorefrontAccessToken      storefrontacesstoken.API
 	Theme                      theme.API
 	Variant                    variant.API
+	Webhook                    webhook.API
 }
 
 func setupAPI(c *impl) {
@@ -92,6 +94,7 @@ func setupAPI(c *impl) {
 	c.StorefrontAccessToken = storefrontacesstoken.New(c.Call)
 	c.Theme = theme.New(c.Call)
 	c.Variant = variant.New(c.Call)
+	c.Webhook = webhook.New(c.Call)
 }
 
 func New(shopName string, opts ...Option) *impl {
